@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Word Guess Game</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body>
+    <header class="main-header">
+        <h1>Let's play some Hangman!</h1>
+            <h2>90s Television Show Edition</h2>
+        </header>
+    
+        <div class="container">
+            <div class="center">
+                <p id="pressPlay">Press any alphabetical key to</p>    
+                    <h3>Guess the cartoon!</h3>
+            </div>
+            <div class="left">
+                <div class="wins">
+                    <h4>Wins:</h4>
+                        <p id="numWins"></p>
+                </div>
+                <div class="losses">
+                    <h4>Losses</h4>
+                        <p id="numLosses"></p>
+                    </div>
+                </div>
+                <div class="right">
+                    <h4>Lives remaining:</h4>
+                        <p id="numGuesses"></p>
+                    <h4>Guessed Letters:</h4>
+                        <p id="guessedLetters"></p>
+                </div>
+            </div>
+    <script src="assets/javascript/game.js" type="text/javascript"></script>
+</body>
+</html>
