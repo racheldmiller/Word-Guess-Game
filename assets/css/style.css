@@ -1,0 +1,12 @@
+@font-face {
+    font-family: "Rocket Clouds";
+    src: url("Rocket Clouds.otf");
+    };
+
+h1 {
+    font-family: "Rocket Clouds", Arial, sans-serif;
+    font-weight:normal;
+    font-style:normal;
+    };
+
+/* need to figure out how to make the font I downloaded work */

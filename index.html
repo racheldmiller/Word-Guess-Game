@@ -1,0 +1,54 @@
+<!-- I don't plan on keeping the Bootstrap elements. With more time, I want to build out the CSS. -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Word Guess Game</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="assets/css/style.css" />
+  </head>
+
+  <body>
+    <div class="jumbotron jumbotron-fluid">
+      <div class="container">
+        <h1 class="display-4">90s Television Shows</h1>
+        <p class="lead">
+          Let's see how much you remember with a game of Hangman! Hint: The
+          shows present as one word.
+        </p>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-sm">
+          <h4>Wins:</h4>
+          <p id="wins"></p>
+          <br />
+          <h4>Losses:</h4>
+          <p id="losses"></p>
+        </div>
+        <div class="col-sm">
+          <p id="ansWord">Press any alphabetical key to</p>
+          <h3>Guess the Show!</h3>
+        </div>
+        <div class="col-sm">
+          <h4>Lives remaining:</h4>
+          <p id="wrongGuesses"></p>
+          <br />
+          <h4>Guessed Letters:</h4>
+          <p id="guessedLetters"></p>
+        </div>
+      </div>
+    </div>
+    <script src="assets/javascript/game.js" type="text/javascript"></script>
+  </body>
+</html>
