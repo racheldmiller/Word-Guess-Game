@@ -1,145 +1,171 @@
-// My list of favorite 90s shows ... and their word options
-var words = ["Sister Sister", "Saved by the Bell", "Family Matters", "All That", "Friends", "The Fresh Prince of Bel-Air"]
-var letter = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "-", "_"];
+// ------------------------------------ GLOBAL VARIABLES ---------------------------------------
 
-// game counters 
+// Some of my favorite 90s shows! To make it easier, they're listed without spaces in-between.
+var words = [
+  "sistersister",
+  "savedbythebell",
+  "familymatters",
+  "allthat",
+  "friends",
+  "thefreshprinceofbelair"
+];
+
+// Game counters
 var blanks = 0; // blanks
-var wins = 0; // number of wins 
+var wins = 0; // number of wins
 var losses = 0; // number of losess
 var maxGuesses = 10; // how many guesses the player has
-var guessesRemaining = 0; // how many guesses are remaining 
+var guessesRemaining = 0; // how many guesses are left
 
-// players guesses 
+// Players guesses
 var blanksLetters = []; // both blank and solved letters
 var guessedLetters = []; // stores guessed letters
 var wrongGuesses = []; // stores wrong guesses
 var ansWordArr = [];
 var ansWord = "";
 
-// the token booleans
-isFinished = true; 
+// Booleans
+isFinished = true;
 letterInWord = true;
 
-// start game 
+// ------------------------------------ HELPER FUNCTIONS ----------------------------------------
+
+// Start game
 function setup() {
+  // start game w/ 10 attempts remaining
+  maxGuesses = 10;
 
-    // start game
-    maxGuesses = 10;
+  // after each round, wrong guesses, guessed letters, and blanks should be empty
+  blanksLetters = [];
+  guessedLetters = [];
+  wrongGuesses = [];
 
-    // word is randomly chosen from the list
-    ansWord = words[Math.floor(Math.random() * words.length)];
+  // word is randomly chosen from the list
+  ansWord = words[Math.floor(Math.random() * words.length)];
 
-    // split word into individual letters
-    ansWordArr = ansWord.split("");
+  // split word into individual letters
+  ansWordArr = ansWord.split("");
 
-    // count number of letters in word
-    blanks = ansWordArr.length;
+  // count number of letters in word
+  // by setting ansWordArr.length to var blanks, it'll make it easier to reference in my for loop
+  blanks = ansWordArr.length;
 
-    // adds "_" to blanks ... here's my for loop
-    for (var i = 0; i < blanks; i++) { 
-        blanksLetters.push("_");
-    }
+  // adds "_" to blanks
+  // this is my for loop
+  for (var i = 0; i < blanks; i++) {
+    blanksLetters.push("_");
+  }
 
-    // resetting after rounds
-    blanksLetters = [];
-    gessesRemaining = maxGuesses; 
-    guessedLetters = [];
-    wrongGuesses = []; 
+  console.log(ansWord); // check to see if word prints
+  console.log(blanksLetters); // check to see if the blanks print
 
-    // testing
-    console.log(ansWord); // to print word in console 
-    console.log(blanksLetters); // to print blanks in console
+  // Update the HTML
+  document.getElementById("wins").innerHTML = wins; // prints wins, restarts game
+  document.getElementById("losses").innerHTML = losses; // prints losses, restarts game
+  // document.getElementById("guesses").innerHTML = guessesRemaining; // prints guesses left
+  document.getElementById("ansWord").innerHTML = blanksLetters.join(" "); // prints blanks and guesses
+  document.getElementById("wrongGuesses").innerHTML = maxGuesses; // prints incorrect letters
+  document.getElementById("guessedLetters").innerHTML = guessedLetters; // prints guessed letters
+}
 
-    // to warn the player of running out of guesses
-    document.getElementById("numGuesses").style.color = "";
-
-    //show the selected elements on the screen 
-    updateScreen();
-
-    // updating HTML 
-    function updateScreen() {
-        document.getElementById("wins").innerText = Wins; // prints wins, restarts game
-        document.getElementById("losses").innerText = Losses; // prints losses, restarts game
-        document.getElementById("guesses").innerText = guessesRemaining; // prints guesses left
-        document.getElementById("ansWord").innerText = ansWordArr.join(""); // prints blanks and guesses 
-        document.getElementById("wrongGuesses").innerText = wrongGuesses.join(""); // prints incorrect letters
-        document.getElementById("guessedLetters").innerText = guessedLetters; // prints guessed letters
-    };
-
-    // display gifs of shows 
-    document.getElementById("giphy-embed").src = "";
-};
-
-// check for winners 
-function winner() {
-    // add +1 to the player's score, given that there's no more "_" in ansWord.
-    if (ansWordArr.toString() === guessedLetters.toString()) {
-        wins++;
-        alert("BOO-YAH!!!");
-        isFinished = true;
-    
-        // if answer is correct, play gif of that show 
-        if(ansWord === "Sister Sister") {
-            document.getElementById("giphy-embed").src = "https://giphy.com/gifs/RxyLmP3eQyCvS/html5";
-        }
-        else if(ansWord === "Saved By the Bell") {
-            document.getElementById("giphy-embed").src = "https://giphy.com/gifs/1HPzxMBCTvjMs/html5";
-        }
-        else if(ansWord === "Family Matters") {
-            document.getElementById("giphy-embed").src = "https://giphy.com/gifs/3o85g8TYvayD4rhj9u/html5";
-        }
-        else if(ansWord === "All That") {
-            document.getElementById("giphy-embed").src = "https://giphy.com/gifs/l4Ep1CAHPrPAEe1So/html5";
-        }
-        else if(ansWord === "Friends") {
-            document.getElementById("giphy-embed").src = "https://giphy.com/gifs/C4msBrFb6szHG/html5";
-        }
-        else if(ansWord === "The Fresh Prince of Bel-Air") {
-            document.getElementById("giphy-embed").src = "https://giphy.com/gifs/Mxygn6lbNmh20/html5";
-        }
-    };
-};
-
-// key activity 
+// Create a function to evaluate the letters a user guesses
 function checkGuess(letter) {
-    
-    // current state
-    var letterInWord = false;
-    
-    // If letter is in the word
-    if (letterInWord) {
-        for (var i = 0; i < blanks; i++) {
-            if (ansWord[i] === letter) {
-                blanksLetters[i] = letter;
-            }
-        }
+  // current state
+  var letterInWord = false;
+
+  // If letter is in the word...
+  for (var i = 0; i < blanks; i++) {
+    console.log(ansWord);
+    if (ansWord[i] === letter) {
+      letterInWord = true;
+      blanksLetters[i] = letter;
     }
+  }
 
-    else {
-        wrongGuesses.push(letter);
-        maxGuesses--; 
-    };
-}; 
+  // If letter isn't in the word, decrease the amount of guesses left by 1
+  // Push wrong letters into guessed letters
+  if (!letterInWord) {
+    wrongGuesses.push(letter);
+    maxGuesses--;
+  }
 
-// check for losers 
+  // Update the HTML
+  document.getElementById("ansWord").innerHTML = blanksLetters.join(" "); // prints blanks and guesses
+  document.getElementById("guessedLetters").innerHTML = wrongGuesses; // prints incorrect letters
+  document.getElementById("wrongGuesses").innerHTML = maxGuesses; // prints guessed letters
+
+  // Depending on how the game goes, the winner or loser function will run
+  winner();
+  loser();
+}
+
+// Create a function to check for winning
+function winner() {
+  // add +1 to the player's score, given that there's no more "_" in ansWord.
+  //   console.log(ansWord);
+  console.log(blanksLetters.toString());
+  console.log(ansWordArr.toString());
+  if (ansWordArr.toString() === blanksLetters.toString()) {
+    wins++;
+    alert("BOO-YAH!!!");
+    isFinished = true;
+
+    // If answer is correct, play gif of that show
+    // ** still need to figure this out **
+
+    // if (ansWord === "sistersister") {
+    //   document.getElementById("giphy-embed").src =
+    //     "https://giphy.com/gifs/RxyLmP3eQyCvS/html5";
+    // } else if (ansWord === "savedbythebell") {
+    //   document.getElementById("giphy-embed").src =
+    //     "https://giphy.com/gifs/1HPzxMBCTvjMs/html5";
+    // } else if (ansWord === "familymatters") {
+    //   document.getElementById("giphy-embed").src =
+    //     "https://giphy.com/gifs/3o85g8TYvayD4rhj9u/html5";
+    // } else if (ansWord === "allthat") {
+    //   document.getElementById("giphy-embed").src =
+    //     "https://giphy.com/gifs/l4Ep1CAHPrPAEe1So/html5";
+    // } else if (ansWord === "friends") {
+    //   document.getElementById("giphy-embed").src =
+    //     "https://giphy.com/gifs/C4msBrFb6szHG/html5";
+    // } else if (ansWord === "thefreshprinceofbelair") {
+    //   document.getElementById("giphy-embed").src =
+    //     "https://giphy.com/gifs/Mxygn6lbNmh20/html5";
+    // }
+
+    // Reset the game
+    setup();
+  }
+}
+
+// Conversely, create a function to check for losing
 function loser() {
-    // if guessesRemaining = 0, add +1 to losses
-    if (maxGuesses === 0) {
-        losses++;
-        alert("As If!");
-        isFinished = true;
+  // if guessesRemaining = 0, add +1 to losses
+  if (maxGuesses === 0) {
+    losses++;
+    alert("As If!");
+    isFinished = true;
 
-        //play the loser gif
-        document.getElementById("giphy-embed").src = "https://giphy.com/gifs/3og0IEeKFFlzaykixW/html5";
-        document.getElementById("losses").style.color = "#FF0000";
-    }
-};
+    //play the loser gif
+    // document.getElementById("giphy-embed").src =
+    //   "https://giphy.com/gifs/3og0IEeKFFlzaykixW/html5";
+    // document.getElementById("losses").style.color = "#FF0000";
 
-// other important functionality for keys
-document.onkeyup = function(event) { // captures key clicks
-    // Converts all key clicks to uppercase letters... because that's more FUN.
-    var guessedLetters = String.fromCharCode(event.which).toUpperCase();
+    // Reset the game
+    setup();
+  }
+}
 
-    // Runs the code to check for correctness.
-    checkGuess(letter);
+// ------------------------------------ Main Process -----------------------------------------
+
+// Start/reset the game
+setup();
+
+// Capture key clicks
+document.onkeyup = function(event) {
+  // Converts all key clicks to lowercase letters
+  var letter = String.fromCharCode(event.which).toLowerCase();
+
+  // Run the code to check for correctness.
+  checkGuess(letter);
 };
