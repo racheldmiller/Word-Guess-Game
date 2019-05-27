@@ -167,7 +167,6 @@ document.onkeyup = function(event) {
   if (event.keyCode >= 65 && event.keyCode <= 90) {
     // Converts all key clicks to lowercase letters
     var letter = String.fromCharCode(event.which).toLowerCase();
-
     // Run the code to check for correctness.
     checkGuess(letter);
   }
