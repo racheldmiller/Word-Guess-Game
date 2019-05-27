@@ -163,7 +163,6 @@ setup();
 
 // Capture key clicks
 document.onkeyup = function(event) {
-<<<<<<< HEAD
   // check to make sure that the key pressed was a letter
   if (event.keyCode >= 65 && event.keyCode <= 90) {
     // Converts all key clicks to lowercase letters
@@ -172,11 +171,4 @@ document.onkeyup = function(event) {
     // Run the code to check for correctness.
     checkGuess(letter);
   }
-=======
-  // Converts all key clicks to lowercase letters
-  var letter = String.fromCharCode(event.which).toLowerCase();
-
-  // Run the code to check for correctness.
-  checkGuess(letter);
->>>>>>> a507cd8ca2f350cd46f05d0b03b2880de65bef3e
 };
