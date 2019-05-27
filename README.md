@@ -16,5 +16,4 @@ I built a hangman-style word guessing game that has a '90s television show theme
   
 <h3>Tentative Issues to Fix:</h3> 
 <ul><li>You can select the same incorrect letter more than once, and it'll still repeatedly count as an attempt.</li>
-<li>Code works perfectly locally, but isn't showing properly once deployed.</li>
   <li>Need to add a giphy div, so the gifs show up once the answer is revealed.</li></ul>
