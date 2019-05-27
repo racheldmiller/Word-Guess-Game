@@ -2,6 +2,9 @@
 
 I built a hangman-style word guessing game that has a '90s television show theme. As someone who still loves watching re-runs of those shows, I thought this would be the perfect opportunity to relect that. I built this using simple JavaScript methods, such as event listeners and conditional statements.
 
+<h3>See it for Yourself!</h3>
+<a href="https://racheldmiller.github.io/word-guess-game/">Click Here</a>
+
 <h3>Languages Used to Build Game:</h3>
 <ul><li>HTML</li>
   <li>CSS</li>
