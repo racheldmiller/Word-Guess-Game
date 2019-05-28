@@ -20,3 +20,7 @@ Click <a href="https://racheldmiller.github.io/word-guess-game/">here</a> to pla
 
 <h3>Resources:</h3>
 I don't own the images; images are from <a href="https://giphy.com">Giphy</a>. I saved them into a folder because I wasn't able to get them displayed by referencing the URL.
+
+<h3>Learn More About Me!</h3>
+<ul><li><a href="https://github.com/racheldmiller/">Github</a></li>
+  <li><a href="https://linkedin.com/rachel-d-miller">LinkedIn</a></li></ul>
