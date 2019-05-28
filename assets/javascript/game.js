@@ -14,7 +14,7 @@ var words = [
 var blanks = 0; // blanks
 var wins = 0; // number of wins
 var losses = 0; // number of losess
-var maxGuesses = 10; // how many guesses the player has
+var maxGuesses = 10; // how many guesses the player has initially
 var guessesRemaining = 0; // how many guesses are left
 
 // Players guesses
@@ -22,7 +22,7 @@ var blanksLetters = []; // both blank and solved letters
 var guessedLetters = []; // stores guessed letters
 var wrongGuesses = []; // stores wrong guesses
 var ansWordArr = [];
-var ansWord = "";
+var ansWord = ""; // the chosen word
 
 // Booleans
 isFinished = true;
@@ -39,6 +39,13 @@ function setup() {
   blanksLetters = [];
   guessedLetters = [];
   wrongGuesses = [];
+
+  document.getElementById("ss").style.visibility = "hidden";
+  document.getElementById("at").style.visibility = "hidden";
+  document.getElementById("fm").style.visibility = "hidden";
+  document.getElementById("f").style.visibility = "hidden";
+  document.getElementById("tfpob").style.visibility = "hidden";
+  document.getElementById("sbtb").style.visibility = "hidden";
 
   // word is randomly chosen from the list
   ansWord = words[Math.floor(Math.random() * words.length)];
@@ -107,31 +114,32 @@ function winner() {
   console.log(ansWordArr.toString());
   if (ansWordArr.toString() === blanksLetters.toString()) {
     wins++;
-    alert("BOO-YAH!!!");
+    // alert("BOO-YAH!!!");
     isFinished = true;
 
     // If answer is correct, play gif of that show
     // ** still need to figure this out **
 
-    // if (ansWord === "sistersister") {
-    //   document.getElementById("giphy-embed").src =
-    //     "https://giphy.com/gifs/RxyLmP3eQyCvS/html5";
-    // } else if (ansWord === "savedbythebell") {
-    //   document.getElementById("giphy-embed").src =
-    //     "https://giphy.com/gifs/1HPzxMBCTvjMs/html5";
-    // } else if (ansWord === "familymatters") {
-    //   document.getElementById("giphy-embed").src =
-    //     "https://giphy.com/gifs/3o85g8TYvayD4rhj9u/html5";
-    // } else if (ansWord === "allthat") {
-    //   document.getElementById("giphy-embed").src =
-    //     "https://giphy.com/gifs/l4Ep1CAHPrPAEe1So/html5";
-    // } else if (ansWord === "friends") {
-    //   document.getElementById("giphy-embed").src =
-    //     "https://giphy.com/gifs/C4msBrFb6szHG/html5";
-    // } else if (ansWord === "thefreshprinceofbelair") {
-    //   document.getElementById("giphy-embed").src =
-    //     "https://giphy.com/gifs/Mxygn6lbNmh20/html5";
-    // }
+    switch (ansWord) {
+      case "sistersister":
+        document.getElementById("ss").style.visibility = "visible";
+        break;
+      case "savedbythebell":
+        document.getElementById("sbtb").style.visibility = "visible";
+        break;
+      case "familymatters":
+        document.getElementById("fm").style.visibility = "visible";
+        break;
+      case "allthat":
+        document.getElementById("at").style.visibility = "visible";
+        break;
+      case "friends":
+        document.getElementById("f").style.visibility = "visible";
+        break;
+      case "thefreshprinceofbelair":
+        document.getElementById("tfpob").style.visibility = "visible";
+        break;
+    }
 
     // Reset the game
     setup();
@@ -143,13 +151,8 @@ function loser() {
   // if guessesRemaining = 0, add +1 to losses
   if (maxGuesses === 0) {
     losses++;
-    alert("As If!");
+    // alert("As If!");
     isFinished = true;
-
-    //play the loser gif
-    // document.getElementById("giphy-embed").src =
-    //   "https://giphy.com/gifs/3og0IEeKFFlzaykixW/html5";
-    // document.getElementById("losses").style.color = "#FF0000";
 
     // Reset the game
     setup();
