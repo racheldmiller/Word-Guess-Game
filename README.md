@@ -2,8 +2,8 @@
 
 I built a hangman-style word guessing game that has a '90s television show theme. As someone who still loves watching re-runs of those shows, I thought this would be the perfect opportunity to relect that. I built this using simple JavaScript methods, such as event listeners and conditional statements.
 
-<h3>See it for Yourself!</h3>
-<a href="https://racheldmiller.github.io/word-guess-game/">Click Here</a>
+<h3>Live Link:</h3>
+Click <a href="https://racheldmiller.github.io/word-guess-game/">here</a> to play with it yourself!
 
 <h3>Languages Used to Build Game:</h3>
 <ul><li>HTML</li>
@@ -16,4 +16,7 @@ I built a hangman-style word guessing game that has a '90s television show theme
   
 <h3>Tentative Issues to Fix:</h3> 
 <ul><li>You can select the same incorrect letter more than once, and it'll still repeatedly count as an attempt.</li>
-  <li>Need to add a giphy div, so the gifs show up once the answer is revealed.</li></ul>
+  <li>My images aren't displaying once a user guesses the correct answer.</li></ul>
+
+<h3>Resources:</h3>
+I don't own the images; images are from <a href="https://giphy.com">Giphy</a>. I saved them into a folder because I wasn't able to get them displayed by referencing the URL.
