@@ -40,12 +40,12 @@ function setup() {
   guessedLetters = [];
   wrongGuesses = [];
 
-  document.getElementById("ss").style.visibility = "hidden";
-  document.getElementById("at").style.visibility = "hidden";
-  document.getElementById("fm").style.visibility = "hidden";
-  document.getElementById("f").style.visibility = "hidden";
-  document.getElementById("tfpob").style.visibility = "hidden";
-  document.getElementById("sbtb").style.visibility = "hidden";
+  // document.getElementById("ss").style.visibility = "hidden";
+  // document.getElementById("at").style.visibility = "hidden";
+  // document.getElementById("fm").style.visibility = "hidden";
+  // document.getElementById("f").style.visibility = "hidden";
+  // document.getElementById("tfpob").style.visibility = "hidden";
+  // document.getElementById("sbtb").style.visibility = "hidden";
 
   // word is randomly chosen from the list
   ansWord = words[Math.floor(Math.random() * words.length)];
@@ -120,26 +120,26 @@ function winner() {
     // If answer is correct, play gif of that show
     // ** still need to figure this out **
 
-    switch (ansWord) {
-      case "sistersister":
-        document.getElementById("ss").style.visibility = "visible";
-        break;
-      case "savedbythebell":
-        document.getElementById("sbtb").style.visibility = "visible";
-        break;
-      case "familymatters":
-        document.getElementById("fm").style.visibility = "visible";
-        break;
-      case "allthat":
-        document.getElementById("at").style.visibility = "visible";
-        break;
-      case "friends":
-        document.getElementById("f").style.visibility = "visible";
-        break;
-      case "thefreshprinceofbelair":
-        document.getElementById("tfpob").style.visibility = "visible";
-        break;
-    }
+    // switch (ansWord) {
+    //   case "sistersister":
+    //     document.getElementById("ss").style.visibility = "visible";
+    //     break;
+    //   case "savedbythebell":
+    //     document.getElementById("sbtb").style.visibility = "visible";
+    //     break;
+    //   case "familymatters":
+    //     document.getElementById("fm").style.visibility = "visible";
+    //     break;
+    //   case "allthat":
+    //     document.getElementById("at").style.visibility = "visible";
+    //     break;
+    //   case "friends":
+    //     document.getElementById("f").style.visibility = "visible";
+    //     break;
+    //   case "thefreshprinceofbelair":
+    //     document.getElementById("tfpob").style.visibility = "visible";
+    //     break;
+    // }
 
     // Reset the game
     setup();
